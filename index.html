@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>Hrishikesh</title>
+</head>
+
+
+<body ng-app="myApp">
+
+<h1 id="mainHeading">Horace Stock Application</h1>
+
+<div class="container">
+    <div class="row" ng-controller="apiController">
+
+        <div class="col-md-6">
+            <div id="1" >
+
+                <select id="dropLocation" ng-change="selectSymbol()" ng-model="sym">
+                    <option ng-repeat="option in symbolsList" value="{{option}}">{{option}}</option>
+                </select>
+                <br>SYMBOL NAME : {{compdetails[0]}}
+                <br>COMPANY NAME  : {{compdetails[1]}}
+                <br>COMPANY STOCK PRICE : {{compdetails[2]}}
+                <br>NUMBER OF SHARES : <input ng-model="sharesNo" type="text"  />
+                <br><button ng-click="addToPortfolio()">Click to UPDATE To Portfolio</button>
+
+
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div>
+                <p ng-repeat="company in myElements">SYMBOL : {{company[0]}} SHARES : {{company[1]}} LAST RATE: {{company[2]}}  TOTAL VALUE :{{company[1]*company[2]}} <button ng-click="deleteFromPortfolio(company[0])">Delete</button></p>
+            </div>
+
+            <button ng-click="postQuote()">CLick here to POST</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
+<script src="app.module.js"></script>
+<script src="portfolioController.js"></script>
+<script src="apiController.js"></script>
+
+
+</body>
+</html>
